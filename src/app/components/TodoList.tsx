@@ -1,15 +1,17 @@
+import { Task } from "@/type";
 import React from "react";
+import Todo from "./Todo";
 
-const TodoList = () => {
+interface TodoListProps {
+  todos: Task[];
+}
+
+const TodoList = ({ todos }: TodoListProps) => {
   return (
     <ul className="space-y-3">
-      <li className="flex justify-between p-4 bg-white border-l-4 border-blue-500 shadow rounded">
-        <span>散歩</span>
-        <div>
-          <button className="text-green-500 px-2">Edit</button>
-          <button className="text-orange-400 px-2">Delete</button>
-        </div>
-      </li>
+      {todos.map((todo) => (
+        <Todo key={todo.id} todo={todo} />
+      ))}
     </ul>
   );
 };
